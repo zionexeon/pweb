@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Data Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .table-style {
+            max-width: 100%;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .button-kembali {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button-kembali:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+
+            .button-kembali {
+                padding: 8px 15px; /* Smaller button padding */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="table-style">
+        <h2>Tabel Data Mahasiswa</h2>
+        <table id="mahasiswaTable">
+            <thead>
+                <tr>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Prodi</th>
+                    <th>Pesan dan Kesan</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <a href="form.html" class="button-kembali">Kembali</a>
+    </div>
+    <script>
+        // Retrieve data from local storage
+        const mahasiswaData = JSON.parse(localStorage.getItem('mahasiswa'));
+
+        // If data exists, populate the table
+        if (mahasiswaData) {
+            const tableBody = document.getElementById('mahasiswaTable').getElementsByTagName('tbody')[0];
+            const newRow = tableBody.insertRow();
+
+            newRow.insertCell(0).textContent = mahasiswaData.nim;
+            newRow.insertCell(1).textContent = mahasiswaData.nama;
+            newRow.insertCell(2).textContent = mahasiswaData.prodi;
+            newRow.insertCell(3).textContent = mahasiswaData.pesan;
+
+            // Optionally, clear local storage after displaying
+            // localStorage.removeItem('mahasiswa');
+        }
+    </script>
+</body>
+
+</html>

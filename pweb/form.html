@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Form</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <div class="form-style-2">
+        <div class="form-style-2-heading">Form Data Mahasiswa</div>
+        <form id="dataForm">
+            <label for="field1"><span>NIM <span class="required">*</span></span>
+                <input type="number" class="input-field" name="field1" required /></label>
+            <label for="field2"><span>Nama <span class="required">*</span></span>
+                <input type="text" class="input-field" name="field2" required /></label>
+            <label for="field4"><span>Prodi</span>
+                <select name="field4" class="select-field">
+                    <option value="Informatika">Informatika</option>
+                    <option value="Sistem Informasi">Sistem Informasi</option>
+                    <option value="Teknologi Informasi">Teknologi Informasi</option>
+                </select>
+            </label>
+            <label for="field5"><span>Pesan dan Kesan <span class="required">*</span></span>
+                <textarea name="field5" class="textarea-field" required></textarea></label>
+
+            <div class="button-container">
+                <input type="submit" value="Submit" />
+                &nbsp;
+                <a href="tabel.html" class="button-cek">Cek Tabel</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const nim = this.field1.value;
+            const nama = this.field2.value;
+            const prodi = this.field4.value;
+            const pesan = this.field5.value;
+
+            // Store the data in local storage
+            const mahasiswa = { nim, nama, prodi, pesan };
+            localStorage.setItem('mahasiswa', JSON.stringify(mahasiswa));
+
+            // Redirect to tabel.html
+            window.location.href = 'tabel.html';
+        });
+    </script>
+</body>
+
+</html>
